@@ -22,8 +22,7 @@ namespace BackendHackathon.Services.Implementation
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Alias),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Sid, user.Id.ToString())
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             var jwtKey = _config["JwtSettings:Key"];

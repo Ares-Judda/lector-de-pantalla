@@ -2,7 +2,6 @@ using BackendHackathon.Data.Models;
 using BackendHackathon.DTOs.Auth;
 using BackendHackathon.Services.Contracts;
 using BackendHackathon.Services.Implementation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
@@ -57,18 +56,6 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
-
-var allowedOrigins = builder.Configuration.GetSection("CorsSettings:AllowedOrigins").Get<string[]>() ?? new string[0];
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("Origin",
-        policy =>
-        {
-            policy.WithOrigins(allowedOrigins)
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
 
 builder.Services.AddRateLimiter(options =>
 {
@@ -125,7 +112,6 @@ else
 
 app.UseHttpsRedirection();
 
-app.UseCors("Origin");
 app.UseRateLimiter();
 
 app.UseAuthentication();
