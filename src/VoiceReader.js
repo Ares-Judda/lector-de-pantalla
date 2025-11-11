@@ -15,7 +15,7 @@ const VoiceReader = () => {
     const utterance = new SpeechSynthesisUtterance(textToRead);
     utterance.lang = "es-MX"; // idioma (puedes cambiar a "es-ES" o "en-US")
     utterance.rate = 1; // velocidad
-    utterance.pitch = 3; // tono
+    utterance.pitch = 1; // tono
     window.speechSynthesis.speak(utterance);
   };
 
