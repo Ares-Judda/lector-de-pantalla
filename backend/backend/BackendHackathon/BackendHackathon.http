@@ -1,0 +1,6 @@
+@BackendHackathon_HostAddress = http://localhost:5183
+
+GET {{BackendHackathon_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
