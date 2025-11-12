@@ -1,0 +1,6 @@
+@OpenFinanceService_HostAddress = http://localhost:5275
+
+GET {{OpenFinanceService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
