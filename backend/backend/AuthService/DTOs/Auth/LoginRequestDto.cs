@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackendHackathon.DTOs.Auth
+namespace AuthService.DTOs.Auth
 {
     public class LoginRequestDto
     {

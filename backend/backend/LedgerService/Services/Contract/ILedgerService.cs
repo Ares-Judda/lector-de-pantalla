@@ -10,5 +10,6 @@ namespace LedgerService.Services.Contract
         Task DeleteBeneficiaryAsync(Guid userId, Guid beneficiaryId);
         Task<IEnumerable<TransactionDto>> GetTransactionsByUserIdAsync(Guid userId);
         Task<TransactionDto> CreateTransactionAsync(Guid userId, CreateTransactionDto newTransaction);
+        Task<AccountDto> CreateAccountAsync(Guid userId, CreateAccountDto newAccount);
     }
 }

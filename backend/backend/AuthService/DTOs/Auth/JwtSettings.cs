@@ -1,4 +1,4 @@
-﻿namespace BackendHackathon.DTOs.Auth
+﻿namespace AuthService.DTOs.Auth
 {
     public class JwtSettings
     {

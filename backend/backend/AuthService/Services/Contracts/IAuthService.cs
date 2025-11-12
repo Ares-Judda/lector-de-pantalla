@@ -1,7 +1,7 @@
-﻿using BackendHackathon.Data.Models;
-using BackendHackathon.DTOs.Auth;
+﻿using AuthService.Data.Models;
+using AuthService.DTOs.Auth;
 
-namespace BackendHackathon.Services.Contracts
+namespace AuthService.Services.Contracts
 {
     public interface IAuthService
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackendHackathon.DTOs.Profile
+namespace AuthService.DTOs.Profile
 {
     public class UpdateConsentRequestDto
     {

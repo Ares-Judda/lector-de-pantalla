@@ -1,7 +1,7 @@
-using BackendHackathon.Data.Models;
-using BackendHackathon.DTOs.Auth;
-using BackendHackathon.Services.Contracts;
-using BackendHackathon.Services.Implementation;
+﻿using AuthService.Data.Models;
+using AuthService.DTOs.Auth;
+using AuthService.Services.Contracts;
+using AuthService.Services.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
@@ -9,27 +9,34 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Threading.RateLimiting;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtSettingsSection = builder.Configuration.GetSection("JwtSettings");
 builder.Services.Configure<JwtSettings>(jwtSettingsSection);
-var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
 
-var connectionString = builder.Configuration.GetConnectionString("AuthenticationConnection");
+var secretKey = builder.Configuration["JwtSettings:SecretKey"];
+var issuer = builder.Configuration["JwtSettings:Issuer"];
+var audience = builder.Configuration["JwtSettings:Audience"];
+if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
+{
+    throw new InvalidOperationException("JwtSettings no está configurado correctamente en appsettings.json");
+}
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 if (string.IsNullOrEmpty(connectionString))
 {
-    throw new InvalidOperationException("Connection string 'AuthenticationConnection' no encontrada. Revisa tus User Secrets.");
+    throw new InvalidOperationException("Connection string 'DefaultConnection' no encontrada en appsettings.json");
 }
 builder.Services.AddDbContext<AuthDbContext>(options =>
-    options.UseSqlServer(connectionString)
+options.UseSqlServer(connectionString)
 );
 
-builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthService, AuthServiceImplementation>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 
 builder.Services.AddAuthentication(options =>
@@ -39,21 +46,31 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.SecretKey) || string.IsNullOrEmpty(jwtSettings.Issuer) || string.IsNullOrEmpty(jwtSettings.Audience))
-    {
-        throw new InvalidOperationException("JwtSettings no est� configurado correctamente en appsettings o User Secrets.");
-    }
-
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings.Issuer,
-        ValidAudience = jwtSettings.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
         ClockSkew = TimeSpan.Zero
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine($"Token inválido: {context.Exception.Message}");
+            return Task.CompletedTask;
+        },
+
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine($"Token válido");
+            return Task.CompletedTask;
+        }
     };
 });
 
@@ -69,7 +86,7 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
-builder.Services.AddControllers(); 
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();
 
@@ -86,17 +103,16 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT"
     });
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
-            new string[] {}
-        }
-    });
+{
+{
+new OpenApiSecurityScheme
+{
+Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+},
+new string[] {}
+}
 });
-
+});
 
 var app = builder.Build();
 
@@ -104,7 +120,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage(); 
+    app.UseDeveloperExceptionPage();
 }
 else
 {
@@ -120,6 +136,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers()
-    .RequireRateLimiting("auth-limit");
+.RequireRateLimiting("auth-limit");
 
 app.Run();

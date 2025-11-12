@@ -1,10 +1,10 @@
-﻿using BackendHackathon.Data.Models;
-using BackendHackathon.DTOs.Profile;
-using BackendHackathon.Services.Contracts;
+﻿using AuthService.Data.Models;
+using AuthService.DTOs.Profile;
+using AuthService.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims; 
 
-namespace BackendHackathon.Services.Implementation
+namespace AuthService.Services.Implementation
 {
     public class ProfileService : IProfileService
     {
@@ -14,8 +14,6 @@ namespace BackendHackathon.Services.Implementation
         {
             _context = context;
         }
-
-        // --- Perfil de Usuario ---
 
         public async Task<UserProfileDto> GetUserProfileAsync(Guid userId)
         {
@@ -68,8 +66,6 @@ namespace BackendHackathon.Services.Implementation
             return await GetUserProfileAsync(userId);
         }
 
-        // --- Perfil de Accesibilidad ---
-
         public async Task<AccessibilityProfileDto> GetAccessibilityProfileAsync(Guid userId)
         {
             var profile = await _context.AccessibilityProfiles
@@ -114,7 +110,6 @@ namespace BackendHackathon.Services.Implementation
             return request; 
         }
 
-        // --- Consentimientos ---
 
         public async Task<IEnumerable<ConsentRecordDto>> GetConsentsAsync(Guid userId)
         {

@@ -1,29 +1,35 @@
-
 using LedgerService.DTOs.Auth;
 using LedgerService.Data.Models;
+using LedgerService.Services.Contract;
+using LedgerService.Services.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Threading.RateLimiting;
-using LedgerService.Services.Contract;
-using LedgerService.Services.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtSettingsSection = builder.Configuration.GetSection("JwtSettings");
 builder.Services.Configure<JwtSettings>(jwtSettingsSection);
-var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
 
-var connectionString = builder.Configuration.GetConnectionString("LedgerDbConnection");
+var secretKey = builder.Configuration["JwtSettings:SecretKey"];
+var issuer = builder.Configuration["JwtSettings:Issuer"];
+var audience = builder.Configuration["JwtSettings:Audience"];
+
+if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
+{
+    throw new InvalidOperationException("JwtSettings no está configurado correctamente en appsettings.json");
+}
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
-    throw new InvalidOperationException("Connection string 'LedgerDbConnection' no encontrada. Revisa tus User Secrets.");
+    throw new InvalidOperationException("Connection string 'DefaultConnection' no encontrada en appsettings.json");
 }
+
 builder.Services.AddDbContext<LedgerDbContext>(options =>
     options.UseSqlServer(connectionString)
 );
@@ -37,21 +43,30 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.SecretKey) || string.IsNullOrEmpty(jwtSettings.Issuer) || string.IsNullOrEmpty(jwtSettings.Audience))
-    {
-        throw new InvalidOperationException("JwtSettings no está configurado correctamente en appsettings o User Secrets.");
-    }
-
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings.Issuer,
-        ValidAudience = jwtSettings.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
         ClockSkew = TimeSpan.Zero
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine($"Token inválido: {context.Exception.Message}");
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine($"Token válido");
+            return Task.CompletedTask;
+        }
     };
 });
 
@@ -59,9 +74,9 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddRateLimiter(options =>
 {
-    options.AddFixedWindowLimiter("auth-limit", opt =>
+    options.AddFixedWindowLimiter("ledger-limit", opt =>
     {
-        opt.PermitLimit = 5;
+        opt.PermitLimit = 100;
         opt.Window = TimeSpan.FromMinutes(1);
         opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
     });
@@ -95,7 +110,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -111,13 +125,12 @@ else
 }
 
 app.UseHttpsRedirection();
-
 app.UseRateLimiter();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers()
-    .RequireRateLimiting("auth-limit");
+    .RequireRateLimiting("ledger-limit");
 
 app.Run();

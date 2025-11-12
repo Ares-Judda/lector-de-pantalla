@@ -1,10 +1,10 @@
-﻿using BackendHackathon.DTOs.Profile;
-using BackendHackathon.Services.Contracts;
+﻿using AuthService.DTOs.Profile;
+using AuthService.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BackendHackathon.Controllers
+namespace AuthService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

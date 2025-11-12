@@ -1,6 +1,6 @@
-﻿using BackendHackathon.DTOs.Profile;
+﻿using AuthService.DTOs.Profile;
 
-namespace BackendHackathon.Services.Contracts
+namespace AuthService.Services.Contracts
 {
     public interface IProfileService
     {

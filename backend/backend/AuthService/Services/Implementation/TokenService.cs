@@ -1,11 +1,11 @@
-﻿using BackendHackathon.Data.Models;
-using BackendHackathon.Services.Contracts;
+﻿using AuthService.Data.Models;
+using AuthService.Services.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BackendHackathon.Services.Implementation
+namespace AuthService.Services.Implementation
 {
     public class TokenService : ITokenService
     {
@@ -25,13 +25,13 @@ namespace BackendHackathon.Services.Implementation
                 new Claim(ClaimTypes.Email, user.Email)
             };
 
-            var jwtKey = _config["JwtSettings:Key"];
+            var jwtKey = _config["JwtSettings:SecretKey"];
             if (string.IsNullOrEmpty(jwtKey))
             {
-                throw new InvalidOperationException("JWT Key no está configurada en User Secrets.");
+                throw new InvalidOperationException("JWT SecretKey no está configurada en appsettings.json");
             }
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
 
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var issuer = _config["JwtSettings:Issuer"];
@@ -50,6 +50,7 @@ namespace BackendHackathon.Services.Implementation
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            Console.WriteLine($"Token generado para usuario: {user.Alias}");
             return tokenHandler.WriteToken(token);
         }
     }

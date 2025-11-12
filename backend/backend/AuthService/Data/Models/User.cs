@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BackendHackathon.Data.Models;
+namespace AuthService.Data.Models;
 
 public partial class User
 {

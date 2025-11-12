@@ -1,7 +1,6 @@
-﻿using Microsoft.OpenApi.MicrosoftExtensions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackendHackathon.DTOs.Auth
+namespace AuthService.DTOs.Auth
 {
     public class RegisterRequestDto
     {
@@ -19,6 +18,8 @@ namespace BackendHackathon.DTOs.Auth
 
         [Required(ErrorMessage = "El número de teléfono es obligatorio")]
         [Phone(ErrorMessage = "El formato del teléfono no es válido")]
-        public string? PhoneNumber { get; set; } 
+        public string? PhoneNumber { get; set; }
+
+        public string? PreferredLanguage { get; set; } = "es";
     }
 }

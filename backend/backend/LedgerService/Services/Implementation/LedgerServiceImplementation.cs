@@ -168,5 +168,38 @@ namespace LedgerService.Services.Implementation
                 CreatedAt = transaction.CreatedAt
             };
         }
+
+        public async Task<AccountDto> CreateAccountAsync(Guid userId, CreateAccountDto newAccount)
+        {
+            var existingAccount = await _context.Accounts
+                .FirstOrDefaultAsync(a => a.UserId == userId && a.AccountType == newAccount.AccountType);
+
+            if (existingAccount != null)
+            {
+                throw new Exception($"El usuario ya tiene una cuenta de tipo '{newAccount.AccountType}'.");
+            }
+
+            var account = new Account
+            {
+                UserId = userId,
+                AccountNumber = newAccount.AccountNumber,
+                AccountType = newAccount.AccountType,
+                Balance = 0.00m, 
+                Currency = "MXN",
+                LastUpdated = DateTime.UtcNow
+            };
+
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+
+            return new AccountDto
+            {
+                Id = account.Id,
+                AccountNumber = account.AccountNumber,
+                AccountType = account.AccountType,
+                Balance = account.Balance,
+                Currency = account.Currency
+            };
+        }
     }
 }

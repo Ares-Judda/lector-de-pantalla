@@ -1,6 +1,6 @@
-﻿using BackendHackathon.Data.Models;
+﻿using AuthService.Data.Models;
 
-namespace BackendHackathon.Services.Contracts
+namespace AuthService.Services.Contracts
 {
     public interface ITokenService
     {

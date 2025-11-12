@@ -1,0 +1,55 @@
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\appsettings.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\ocelot.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.staticwebassets.endpoints.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.exe
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.deps.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.runtimeconfig.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\API Gateway.pdb
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\IPAddressRange.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.Extensions.DiagnosticAdapter.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Ocelot.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.csproj.AssemblyReference.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.AssemblyInfoInputs.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.AssemblyInfo.cs
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.csproj.CoreCompileInputs.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.sourcelink.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\scopedcss\bundle\API Gateway.styles.css
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gate.582AC83B.Up2Date
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\refint\API Gateway.dll
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.pdb
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\API Gateway.genruntimeconfig.cache
+C:\Users\alesa\OneDrive\Escritorio\Hackathon\lector-de-pantalla\backend\backend\API Gateway\obj\Debug\net8.0\ref\API Gateway.dll

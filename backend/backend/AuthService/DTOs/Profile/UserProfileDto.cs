@@ -1,4 +1,4 @@
-﻿namespace BackendHackathon.DTOs.Profile
+﻿namespace AuthService.DTOs.Profile
 {
     public class UserProfileDto
     {

@@ -6,6 +6,9 @@ namespace OpenFinanceService.Data.Models;
 
 public partial class OpenFinanceDbContext : DbContext
 {
+    public OpenFinanceDbContext()
+    {
+    }
 
     public OpenFinanceDbContext(DbContextOptions<OpenFinanceDbContext> options)
         : base(options)
@@ -15,6 +18,10 @@ public partial class OpenFinanceDbContext : DbContext
     public virtual DbSet<ExternalProduct> ExternalProducts { get; set; }
 
     public virtual DbSet<OpenFinanceConnection> OpenFinanceConnections { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=ALECER\\SQLEXPRESS;Database=openfinance_db;User Id=AleDataBase;Password=123SPEI;Trusted_Connection=False;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
