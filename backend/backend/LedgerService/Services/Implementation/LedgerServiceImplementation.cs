@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LedgerService.Services.Implementation
 {
-    public class LedgerService : ILedgerService
+    public class LedgerServiceImplementation : ILedgerService
     {
         private readonly LedgerDbContext _context;
 
-        public LedgerService(LedgerDbContext context)
+        public LedgerServiceImplementation(LedgerDbContext context)
         {
             _context = context;
         }

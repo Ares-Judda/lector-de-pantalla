@@ -10,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Threading.RateLimiting;
+using LedgerService.Services.Contract;
+using LedgerService.Services.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,8 @@ if (string.IsNullOrEmpty(connectionString))
 builder.Services.AddDbContext<LedgerDbContext>(options =>
     options.UseSqlServer(connectionString)
 );
+
+builder.Services.AddScoped<ILedgerService, LedgerServiceImplementation>();
 
 builder.Services.AddAuthentication(options =>
 {

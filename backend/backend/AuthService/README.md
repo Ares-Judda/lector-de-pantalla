@@ -20,7 +20,7 @@ dotnet user-secrets init
 **2. Guardar la Cadena de Conexión:**  
 (Reemplaza con tu servidor y contraseña real)
 ```
-dotnet user-secrets set "ConnectionStrings:AuthDbConnection" "Server=localhost;Database=auth_db;User Id=user;Password=password!;Trusted_Connection=False;Encrypt=False;"
+dotnet user-secrets set "ConnectionStrings:AuthDbConnection" "Server=server;Database=auth_db;User Id=user;Password=password!;Trusted_Connection=False;Encrypt=False;"
 ```
 
 **3. Guardar la Clave Secreta de JWT:**  

@@ -40,18 +40,17 @@ Abre una terminal en la carpeta raíz de tu proyecto **LedgerService**:
 dotnet user-secrets init
 ```
 
-2. **Guardar la Cadena de Conexión (Ledger):**  
-   (Usamos _AleDataBase_, la contraseña _123SPEI_ y _TrustServerCertificate=True_ como en tu último comando exitoso).
+2. **Guardar la Cadena de Conexión (Ledger):**
 
 ```
-dotnet user-secrets set "ConnectionStrings:LedgerDbConnection" "Server=ALECER\SQLEXPRESS;Database=ledger_db;User Id=AleDataBase;Password=123SPEI;Trusted_Connection=False;Encrypt=False;TrustServerCertificate=True;"
+dotnet user-secrets set "ConnectionStrings:LedgerDbConnection" "Server=server;Database=ledger_db;User Id=usuario;Password=password;Trusted_Connection=False;Encrypt=False;TrustServerCertificate=True;"
 ```
 
 3. **Guardar la Clave Secreta de JWT:**  
    (¡MUY IMPORTANTE! Esta clave debe ser idéntica a la que usaste en _AuthProfileService_).
 
 ```
-dotnet user-secrets set "JwtSettings:Key" "ESTA-ES-UNA-CLAVE-SECRETA-MUY-LARGA-Y-SEGURA-PARA-EL-HACKATHON-123!"
+dotnet user-secrets set "JwtSettings:Key" "CLAVE-SECRETA-MUY-LARGA"
 ```
 
 ---
